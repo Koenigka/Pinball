@@ -1,7 +1,6 @@
 package flipperElements;
 
-public class Slingshot implements FlipperElement{
-
+public class Hole implements FlipperElement {
     @Override
     public void hit() {
 
