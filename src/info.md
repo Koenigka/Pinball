@@ -23,7 +23,7 @@ Diese Klasse sollte eine Liste von FlipperElementen, den aktuellen FlipperState 
 Implementieren Sie Methoden für Aktionen wie Münzeinwurf, Startknopfdruck usw., und lassen Sie den aktuellen FlipperState diese Aktionen verarbeiten.
 Hauptprogramm/Testlauf
 
-Erstellen Sie eine ThePInBallGame Klasse oder Methode.
+Erstellen Sie eine ThePinBallGame Klasse oder Methode.
 Erzeugen Sie hier eine Instanz von FlipperAutomat und führen Sie ein einfaches Szenario durch: Münze einwerfen, Spiel starten, einige Elemente treffen, Punkte anzeigen, Spiel beenden.
 Iterieren und Testen
 
