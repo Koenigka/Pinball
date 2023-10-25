@@ -1,27 +1,20 @@
 package state;
 
-
-import automat.PinballAutomat;
+import automat.Machine;
 
 public class NoCredit extends State {
 
-    public NoCredit(PinballAutomat automaton) {
-        super(automaton);
+    public NoCredit() {
     }
 
     @Override
-    public void insertCoin() {
-        automaton.addCredit();
-        automaton.setCurrentState(new Ready(automaton));
+    public void addCoin(Machine machine) {
+        machine.setState(new Ready());
+        super.addCoin(machine);
     }
 
     @Override
-    public void pressStart() {
-        System.out.println("Kein Guthaben vorhanden!");
-    }
-
-    @Override
-    public void ballLost() {
-        // In diesem Zustand passiert nichts, wenn eine Kugel verloren geht.
+    public void start(Machine machine) {
+        super.start(machine);
     }
 }
