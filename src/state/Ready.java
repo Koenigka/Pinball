@@ -1,31 +1,30 @@
 package state;
 
-import automat.PinballAutomat;
+
+import automat.Machine;
 
 public class Ready extends State {
 
-    public Ready(PinballAutomat automaton) {
-        super(automaton);
-    }
 
-    @Override
-    public void insertCoin() {
-        automaton.addCredit();
-    }
-
-    @Override
-    public void pressStart() {
-        if (automaton.hasCredit()) {
-            automaton.startGame();
-            automaton.setCurrentState(new Playing(automaton));
-        } else {
-            System.out.println("Mehr Guthaben erforderlich!");
+        @Override
+        public void addCoin(Machine machine) {
+            super.addCoin(machine);
         }
-    }
 
-    @Override
-    public void ballLost() {
-        // In diesem Zustand passiert nichts, wenn eine Kugel verloren geht.
-    }
+        @Override
+        public void start(Machine machine) {
+            machine.setState(new Playing());
+            if (machine.getCredit() > 0) {
+                machine.setCredit(machine.getCredit() - 1);
+                machine.setBalls(3);
+                System.out.println("Game is starting! Have fun!");
+            } else {
+                machine.setState(new NoCredit());
+                System.out.println("Please insert coin to play.");
+            }
+        }
 }
+
+
+
 
