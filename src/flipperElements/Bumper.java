@@ -20,7 +20,7 @@ public class Bumper implements FlipperElement{
         this.hitCount++;
         activateBumper();
         activationCommand.execute(this);
-        System.out.println("The " + bumperName + " bumper is hit!");
+        System.out.println(bumperName + " is hit!");
     }
 
     private void activateBumper() {

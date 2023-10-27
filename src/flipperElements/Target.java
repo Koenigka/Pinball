@@ -1,6 +1,7 @@
 package flipperElements;
 
 import commands.Command;
+import mediator.FlipperMediator;
 import mediator.Mediator;
 import visitor.Visitor;
 
@@ -8,8 +9,8 @@ public class Target implements FlipperElement{
 
     private String targetName;
     private int hitCount = 0;
-    private Command activationCommand;
-    private Mediator mediator;
+    private Command command;
+    private FlipperMediator mediator;
     private boolean isTargetDown = false;
 
     @Override
@@ -17,11 +18,11 @@ public class Target implements FlipperElement{
         if (!isTargetDown) {
             this.hitCount++;
             setTargetDown(true);
-            activationCommand.execute(this);
+            command.execute(this);
             mediator.hitTarget();
-            System.out.println("The " + targetName + " target is hit!");
+            System.out.println(targetName + " is hit!");
         } else {
-            System.out.println("The " + targetName + " target is down!");
+            System.out.println(targetName + " is down!");
         }
     }
 
@@ -29,6 +30,12 @@ public class Target implements FlipperElement{
     public void accept(Visitor visitor) {
         visitor.visit(this);
     }
+
+    public Target(String targetName, Command command) {
+        this.targetName = targetName;
+        this.command = command;
+    }
+
     public String getTargetName() {
         return targetName;
     }
@@ -45,19 +52,19 @@ public class Target implements FlipperElement{
         this.hitCount = hitCount;
     }
 
-    public Command getActivationCommand() {
-        return activationCommand;
+    public Command getCommand() {
+        return command;
     }
 
-    public void setActivationCommand(Command activationCommand) {
-        this.activationCommand = activationCommand;
+    public void setCommand(Command command) {
+        this.command = command;
     }
 
-    public Mediator getMediator() {
+    public FlipperMediator getMediator() {
         return mediator;
     }
 
-    public void setMediator(Mediator mediator) {
+    public void setMediator(FlipperMediator mediator) {
         this.mediator = mediator;
     }
 
@@ -68,10 +75,4 @@ public class Target implements FlipperElement{
     public void setTargetDown(boolean targetDown) {
         isTargetDown = targetDown;
     }
-
-    public Target(String targetName, Command activationCommand) {
-        this.targetName = targetName;
-        this.activationCommand = activationCommand;
-    }
-
 }

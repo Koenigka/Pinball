@@ -14,9 +14,9 @@ public class Ramp implements FlipperElement{
         if (isOpened) {
             this.hitCount++;
             activationCommand.execute(this);
-            System.out.println("The " + rampName + " ramp is hit!");
+            System.out.println(rampName + " is hit!");
         } else {
-            System.out.println("The " + rampName + " ramp is closed!");
+            System.out.println(rampName + " is closed!");
         }
     }
     @Override
