@@ -1,11 +1,6 @@
 package mediator;
 
-import flipperElements.Slingshot;
+public interface Mediator {
 
-public class Mediator {
-    public void hitTarget() {
-    }
-
-    public void hitSlingshot() {
-    }
+    void hitTarget();
 }
